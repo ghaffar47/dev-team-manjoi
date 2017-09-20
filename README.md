@@ -4,4 +4,4 @@ repo ini adalah medan untuk dev team manjoi mendirikan web app untuk digunakan s
 
 ![alt text](readme/login.png "Login Page")
 
-![alt text](readme/Utama.png "Main Page")
+![alt text](readme/utama.png "Main Page")
