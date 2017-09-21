@@ -77,9 +77,11 @@
 		</div>
 		<div class="input-group">
 			<button type="submit" class="btn" name="login_user">Login</button>
+          
 		</div>
-		
+		<a  href="index.php"></i>Kembali ke Halaman Utama</a>
 	</form>
+    
 </div>
 
 <ul class="bg-bubbles">

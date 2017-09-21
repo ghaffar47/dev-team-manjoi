@@ -1,4 +1,4 @@
-<?php include('server2.php') ?>
+<?php include "server2.php"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -29,17 +29,12 @@
                 <h6>&nbsp;</h6> 
         </div>
           <h2><img src="assets/img/BANNER.jpg" width="1515" height="200"></h2>
-      </nav>   
+      </nav>     
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-				<li class="text-center">
-                    <img src="assets/img/find_user.png" class="user-image img-responsive"/>
-                    <?php  if (isset($_SESSION['username'])) : ?>
-                    <font color="#FFFFFF"><p> Welcome <strong><?php echo $_SESSION['username']; ?></strong>
-                    <?php endif ?>
-                    </font>
+				<li class="text-center"></font>
 				  </li>
 				
 					<li><a href="index.php"><i class="fa fa-qrcode fa-3x"></i>Halaman Utama</a>
@@ -47,7 +42,7 @@
                     <li><a class="active-menu" href="permohonan_baru.php"><i class="fa fa-edit fa-3x"></i>Permohonan Baru</a></li>
                     <li><a  href="semak_status.php"><i class="fa fa-desktop fa-3x"></i>Semak Status Permohonan</a></li>
                     <li><a  href="hubungi.php"><i class="fa fa-sitemap fa-3x"></i>Hubungi Kami</a></li>
-					<li><a  href="login.php"><i class="fa fa-square-o fa-3x"></i>Daftar Keluar</a></li>							
+					<li><a  href="login.php"><i class="fa fa-square-o fa-3x"></i>Daftar Masuk</a></li>					
 					
 				      
                 </ul>
@@ -77,42 +72,45 @@
                                     <br>
                                  
                                     
-     <form  role="form" method="post" action="permohonan_baru.php">
-
-		<?php include('errors.php'); ?>
+     <form method="post" action="permohonan_baru.php" class="input_form">
+		<?php if (isset($errors)) { ?>
+			<p><?php echo $errors; ?></p>
+		<?php } ?>
+		
         
  		<div class="form-group">
-        <label>Nama Pelapor<font color="#FF0000">*</font></label>
+        <label>NAMA SEKOLAH<font color="#FF0000">*</font></label>
+        <input class="form-control" type="text" name="sekolah" />
+        
+        <label>KOD SEKOLAH<font color="#FF0000">*</font></label>
+        <input class="form-control" type="text" name="kod_sekolah" />
+        
+        <label>NAMA PELAPOR<font color="#FF0000">*</font></label>
         <input class="form-control" type="text" name="nama_pelapor" />
         
-        <label>Jawatan<font color="#FF0000">*</font></label>
+        <label>JAWATAN PELAPOR<font color="#FF0000">*</font></label>
         <input class="form-control" type="text" name="jawatan_pelapor"/>
         
-        <label>Nombor Telefon<font color="#FF0000">*</font></label>
+        <label>NOMBOR TELEFON<font color="#FF0000">*</font></label>
         <input class="form-control" type="number" name="telefon_pelapor"/>
         
-        <label>Kategori Kerosakan<font color="#FF0000">*</font></label>
-        <input class="form-control" type="text" name="kategori_rosak"/>
+        <label>EMAIL<font color="#FF0000">*</font></label>
+        <input class="form-control" type="text" name="email"/>
         
-        <label>Keterangan Kerosakan<font color="#FF0000">*</font></label>
-        <input class="form-control" type="text" name="keterangan_rosak"/>
+        <label>KETERANGAN<font color="#FF0000">*</font></label>
+        <textarea name="keterangan" rows="10" class="form-control"></textarea>
         
-        <label>Nombor laporan</label>
-        <label type="text" name="no_lapor">
         
-            <?php
-			$num = rand(100000,999999);
-			$cod = "ST";
-			echo $cod;
-			echo $num;
-			?>
-		</label>
-        <label><font color="#FF0000"> Sila simpan nombor laporan untuk semakan status permohonan</font></label>
+        
+        
+        
         <br><br>
-        <button type="submit" class="btn btn-default" name="permohonan_baru">Hantar</button>
+        <button type="submit" name="submit" id="add_btn" class="add_btn">hantar</button>
         <button type="reset" class="btn btn-primary">Padam</button>
  
 	</form>
+
+
     </div>
              <!-- /. PAGE INNER  -->
              
