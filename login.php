@@ -16,7 +16,54 @@
 	<div class="container">
 		<h1>SISTEM PERMOHONAN SMART TEAM</h1>
 	
-
+    <?php
+	include ('include/dbconnect.php');
+	if(isset($_POST['username']) && isset($_POST['password'])){
+		$username=$_POST['username'];
+		$password=md5($_POST['password']);
+		$stmt=$conndbo->prepare("SELECT * FROM user WHERE username=? AND password=?");
+		$stmt->bindParam(1, $username);
+		$stmt->bindParam(2 , $password);
+		$stmt->execute();
+		$row=$stmt->fetch();
+		$user=$row['username'];
+		$pass=$row['password'];
+		$id=$row['id_user'];
+		$level=$row['level_user'];
+		if($username==$user && $pass==$password){
+			session_start();
+			$_SESSION['username']=$user;
+			$_SESSION['password']=$pass;
+			$_SESSION['id_user']=$id;
+			$_SESSION['level_user']=$level;
+			if($level=='sekolah'){
+			?>
+			<script>window.location.href='index.php'</script>
+			<?php
+            } 
+			if($level=='admin'){
+			?>
+			<script>window.location.href='index_admin.php'</script>
+			<?php }
+			if($level=='ppd'){
+			?>
+			<script>window.location.href='index_ppd.php'</script>
+			<?php }
+			else {
+			?>
+            <script>window.location.href='index_jtk.php'</script>
+            <?php
+			}
+	} else{
+		?>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+        <strong>Maaf!</strong> Password dan username anda salah, tolong ulangi
+        </div>
+        <?php
+        }
+        }
+        ?>
 
 	<form method="post" action="login.php">
 
@@ -30,22 +77,14 @@
 		</div>
 		<div class="input-group">
 			<button type="submit" class="btn" name="login_user">Login</button>
+          
 		</div>
-		
+		<a  href="index.php"></i>Kembali ke Halaman Utama</a>
 	</form>
+    
 </div>
 
 <ul class="bg-bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
 		<li></li>
 		<li></li>
 		<li></li>

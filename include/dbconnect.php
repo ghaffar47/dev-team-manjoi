@@ -12,5 +12,13 @@ $dbname="smart-team";
 $conn = mysqli_connect($dbservername,$dbusername,$dbpassword,$dbname);
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+	die('sambungan gagal: ' . $conn->connect_error);
 } 
+
+//PDO connection
+
+try{
+	$conndbo = new PDO("mysql:host=$dbservername;dbname=$dbname;", $dbusername, $dbpassword);
+} catch(PDOException $e){
+	die( "Connection failed: " . $e->getMessage());
+}
