@@ -43,7 +43,7 @@
             } 
 			if($level=='admin'){
 			?>
-			<script>window.location.href='index_admin.php'</script>
+			<script>window.location.href='admin/index.php'</script>
 			<?php }
 			if($level=='ppd'){
 			?>
