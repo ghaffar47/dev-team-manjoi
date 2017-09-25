@@ -2,8 +2,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<?php include ('include/header.php') ?>
-<?php include ('include/topnav.php'); ?>
+<?php 
+$page = 'update'; 
+include ('include/header.php');
+include ('include/topnav.php'); 
+?>
+
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">

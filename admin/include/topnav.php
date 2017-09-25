@@ -10,9 +10,10 @@
                     </font>
                   </li>
                 
-                    
-                    <li><a class="active-menu" href="index.php"><i class="fa fa-desktop fa-3x"></i>Pendaftaran Baru</a></li>
-                    <li><a  href="update.php"><i class="fa fa-qrcode fa-3x"></i>Kemaskini Profile</a></li>
+                   
+                   
+                    <li><a class="<?php if($page=='admin'){echo 'active-menu';}?>" href="index.php"><i class="fa fa-desktop fa-3x"></i>Pendaftaran Baru</a></li>
+                    <li><a class="<?php if($page=='update'){echo 'active-menu';}?>" href="update.php"><i class="fa fa-qrcode fa-3x"></i>Kemaskini Profile</a></li>
                     <li><a  href="../logout.php"><i class="fa fa-bar-chart-o fa-3x"></i>Daftar Keluar</a></li>                  
                     
                       
@@ -21,3 +22,5 @@
             </div>
             
         </nav> 
+
+
