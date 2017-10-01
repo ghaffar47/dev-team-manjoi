@@ -7,6 +7,7 @@
   $page = 'mohon' ; 
   include 'include/header.php';
   include 'include/topnav.php';
+  include 'include/function.php';
  ?>
 
         <!-- /. NAV SIDE  -->
@@ -32,10 +33,10 @@
                                  
                                     
      <form method="post" action="permohonan_baru.php" class="input_form">
-		<?php if (isset($errors)) { ?>
+		<!--<?php if (isset($errors)) { ?>
 			<p><?php echo $errors; ?></p>
 		<?php } ?>
-		
+		-->
         
  		<div class="form-group">
         <label>NAMA SEKOLAH<font color="#FF0000">*</font></label>
@@ -68,6 +69,56 @@
         <button type="reset" class="btn btn-primary">Padam</button>
  
 	</form>
+
+  
+<?php isset($_POST['permohonan_baru']);
+     //receive all input values from the form
+
+    $sekolah = $_POST['sekolah'];
+    $kod_sekolah = $_POST['kod_sekolah'];
+    $nama_pelapor = $_POST['nama_pelapor'];
+    $jawatan_pelapor = $_POST['jawatan_pelapor'];
+    $no_hubungi = $_POST['telefon_pelapor'];
+    $email = $_POST['email'];
+    $keterangan = $_POST['keterangan'];
+    $date = date('Y-m-d H:i:s');
+    $id = unique_id(8);
+
+    // form validation: ensure that the form is correctly filled
+    if (empty($nama_pelapor)) { array_push($errors, "Sila lengkapkan Nama Pelapor"); }
+    if (empty($jawatan_pelapor)) { array_push($errors, "Sila lengkapkan Jawatan Pelapor"); }
+    if (empty($no_hubungi)) { array_push($errors, "Sila lengkapkan Nama Pelapor"); }
+    if (empty($email)) { array_push($errors, "Sila lengkapkan email pelapor"); }
+    if (empty($sekolah)) { array_push($errors, "Sila masukkan nama sekolah"); }
+    if (empty($kod_sekolah)) { array_push($errors, "Sila masukkn kod sekolah"); }
+    if (empty($keterangan)) { array_push($errors, "Sila masukkan laporan kerosakan"); };
+
+    // Jika Permohonan baru tiada ralat
+
+
+
+
+    $query = "INSERT INTO permohonan (sekolah, tarikh, no_tiket , kod_sekolah, nama_pelapor, jawatan_pelapor, telefon_pelapor, email, keterangan)VALUES('$sekolah','$date', '$id' , '$kod_sekolah', '$nama_pelapor', '$jawatan_pelapor', '$no_hubungi', '$email', '$keterangan')";
+      
+
+    mysqli_query($conn, $query);
+
+
+
+if (mysqli_query($conn, $query)) {
+    echo "Laporan anda telah berjaya dihantar";
+} else {
+    echo "Error: " . $query . "<br>" . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+
+      //$_SESSION['success'] = "Berjaya Dihantar";
+      //header('location: semak_status.php');
+    
+    
+  
+  ?>
 
 
     </div>
