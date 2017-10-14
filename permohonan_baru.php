@@ -1,14 +1,119 @@
-<?php include "include/dbconnect.php"; ?>
+<?php 
+include "include/dbconnect.php"; 
+
+$sekolaherr = $kod_sekolaherr = $nama_pelaporerr = $jawatan_pelaporerr = $no_hubungierr = $emailerr = $keteranganerr =  "";
+$sekolah = $kod_sekolah = $nama_pelapor = $jawatan_pelapor = $no_hubungi = $email = $keterangan =  "";
+
+
+include "include/function.php";
+$ids = unique_id(8);
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+    // Validate user name
+    if(empty($_POST["sekolah"])){
+        $sekolaherr = 'sila masukkan nama sekolah.';
+    }else{
+        $sekolah = filterString($_POST["sekolah"]);
+        if($sekolah == FALSE){
+            $sekolaherr = 'sila masukkan nama sekolah.';
+        }
+    }
+
+    if(empty($_POST["kod_sekolah"])) {
+      $kod_sekolaherr = 'sila masukkan kod sekolah.';
+    }else{
+      $kod_sekolah = filterString($_POST["kod_sekolah"]);
+      if($kod_sekolah == FALSE){
+        $kod_sekolaherr = 'sila masukkan kod sekolah.';
+      }
+    }
+
+    if(empty($_POST["nama_pelapor"])) {
+      $nama_pelaporerr = 'sila masukkan nama anda.';
+    }else{
+      $nama_pelapor = filterName($_POST["nama_pelapor"]);
+      if($nama_pelapor == false){
+        $nama_pelaporerr = 'sila masukkan nama anda.';
+      }
+    }
+
+
+    if(empty($_POST["jawatan_pelapor"])) {
+      $jawatan_pelaporerr = 'sila masukkan jawatan anda.';
+    }else{
+      $jawatan_pelapor = filterString($_POST["jawatan_pelapor"]);
+      if($jawatan_pelapor == false){
+        $jawatan_pelaporerr = 'sila masukkan jawatan anda.';
+      }
+    }
+
+    if(empty($_POST["no_hubungi"])) {
+      $no_hubungierr = 'sila masukkan no telefon anda.';
+    }else{
+      $no_hubungi = filterphone($_POST["no_hubungi"]);
+      if($no_hubungi == false){
+        $no_hubungierr = 'sila masukkan no telefon anda iaitu 9 angka bagi talian tetap (termasuk kod kawasan) atau 10 angka untuk talian mudah alih.';
+      }
+    }
+
+    if(empty($_POST["email"])) {
+      $emailerr = 'sila masukkan email anda.';
+    }else{
+      $email = filterEmail($_POST["email"]);
+      if($email == false){
+        $emailerr = 'sila masukkan email dengan format yang betul.';
+      }
+    }
+
+    if(empty($_POST["keterangan"])) {
+      $keteranganerr = 'sila masukkan keterangan anda.';
+    }else{
+      $keterangan = filtermessage($_POST["keterangan"]); 
+    }
+
+
+
+        
+if(empty($sekolaherr) && empty($kod_sekolaherr) && empty($nama_pelaporerr) && empty($nama_pelaporerr) && empty($jawatan_pelaporerr) && empty($no_hubungierr) && empty($emailerr) && empty($keteranganerr))  {           
+
+$query = "INSERT INTO permohonan (sekolah, no_tiket , kod_sekolah, nama_pelapor, jawatan_pelapor, telefon_pelapor, email, keterangan)VALUES('$sekolah', '$ids' , '$kod_sekolah', '$nama_pelapor', '$jawatan_pelapor', '$no_hubungi', '$email', '$keterangan')";
+
+//$query = "INSERT INTO permohonan (SEKOLAH, kod_sekolah) VALUES ('$sekolah', '$kod_sekolah')";
+
+mysqli_query($conn, $query); 
+
+mysqli_close($conn);
+
+//echo "<script type='text/javascript'>alert('anda telah berjaya menghantar permohonan')</script>";
+echo '<script type="text/javascript">'; 
+echo 'alert("anda telah berjaya menghantar permohonan, sekian terima kasih");'; 
+echo 'window.location = "index.php";';
+echo '</script>';
+    }else{
+      echo "<script type='text/javascript'>alert('sila lengkapkan semua medan')</script>";
+    }
+}    
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<style type="text/css">
+        .error{ color: red; }
+        .success{ color: green; }
+  </style>
 
-
-<?php 
+  <?php 
   $page = 'mohon' ; 
   include 'include/header.php';
   include 'include/topnav.php';
-  include 'include/function.php';
- ?>
+  //include 'include/function.php';
+  ?>
 
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
@@ -33,32 +138,36 @@
                                  
                                     
      <form method="post" action="permohonan_baru.php" class="input_form">
-		<!--<?php if (isset($errors)) { ?>
-			<p><?php echo $errors; ?></p>
-		<?php } ?>
-		-->
+	
         
  		<div class="form-group">
-        <label>NAMA SEKOLAH<font color="#FF0000">*</font></label>
-        <input class="form-control" type="text" name="sekolah" />
+        <label>NAMA SEKOLAH<font color="#FF0000">* <span><?php echo $sekolaherr; ?></span></font></label>
+        <input class="form-control" type="text" name="sekolah" id="sekolah" value="<?php echo $sekolah; ?>">
+
         
-        <label>KOD SEKOLAH<font color="#FF0000">*</font></label>
-        <input class="form-control" type="text" name="kod_sekolah" />
+        <label>KOD SEKOLAH<font color="#FF0000">* <span><?php echo $kod_sekolaherr ?> </span></font></label>
+        <input class="form-control" type="text" name="kod_sekolah" id="kod_sekolah" value="<?php echo $kod_sekolah; ?>">
         
-        <label>NAMA PELAPOR<font color="#FF0000">*</font></label>
-        <input class="form-control" type="text" name="nama_pelapor" />
         
-        <label>JAWATAN PELAPOR<font color="#FF0000">*</font></label>
-        <input class="form-control" type="text" name="jawatan_pelapor"/>
+        <label>NAMA PELAPOR<font color="#FF0000">* <SPAN><?PHP echo $nama_pelaporerr ?></SPAN></font></label>
+        <input class="form-control" type="text" name="nama_pelapor" id="nama_pelapor" value = "<?php echo $nama_pelapor; ?>">
         
-        <label>NOMBOR TELEFON<font color="#FF0000">*</font></label>
-        <input class="form-control" type="number" name="telefon_pelapor"/>
         
-        <label>EMAIL<font color="#FF0000">*</font></label>
-        <input class="form-control" type="text" name="email"/>
+        <label>JAWATAN PELAPOR<font color="#FF0000">* <span><?php echo $jawatan_pelaporerr ?></span></font></label>
+        <input class="form-control" type="text" name="jawatan_pelapor" id="jawatan_pelapor" value="<?php echo $jawatan_pelapor; ?>">
         
-        <label>KETERANGAN<font color="#FF0000">*</font></label>
-        <textarea name="keterangan" rows="10" class="form-control"></textarea>
+        
+        <label>NOMBOR TELEFON<font color="#FF0000">* <span><?php echo $no_hubungierr ?></span></font></label>
+        <input class="form-control" name="no_hubungi" id="no_hubungi" value="<?php echo $no_hubungi; ?>">
+        
+        
+        <label>EMAIL<font color="#FF0000">* <span><?php echo $emailerr ?></span></font></label>
+        <input class="form-control" type="text" name="email" id="email" value="<?php echo $email; ?>">
+        
+        
+        <label>KETERANGAN<font color="#FF0000">* <span><?php echo $keteranganerr ?></span></font></label>
+        <textarea name="keterangan" rows="10" class="form-control" id="keterangan" value="<?php echo $keterangan; ?>"></textarea>
+
         
         
         
@@ -71,54 +180,7 @@
 	</form>
 
   
-<?php isset($_POST['permohonan_baru']);
-     //receive all input values from the form
 
-    $sekolah = $_POST['sekolah'];
-    $kod_sekolah = $_POST['kod_sekolah'];
-    $nama_pelapor = $_POST['nama_pelapor'];
-    $jawatan_pelapor = $_POST['jawatan_pelapor'];
-    $no_hubungi = $_POST['telefon_pelapor'];
-    $email = $_POST['email'];
-    $keterangan = $_POST['keterangan'];
-    $date = date('Y-m-d H:i:s');
-    $id = unique_id(8);
-
-    // form validation: ensure that the form is correctly filled
-    if (empty($nama_pelapor)) { array_push($errors, "Sila lengkapkan Nama Pelapor"); }
-    if (empty($jawatan_pelapor)) { array_push($errors, "Sila lengkapkan Jawatan Pelapor"); }
-    if (empty($no_hubungi)) { array_push($errors, "Sila lengkapkan Nama Pelapor"); }
-    if (empty($email)) { array_push($errors, "Sila lengkapkan email pelapor"); }
-    if (empty($sekolah)) { array_push($errors, "Sila masukkan nama sekolah"); }
-    if (empty($kod_sekolah)) { array_push($errors, "Sila masukkn kod sekolah"); }
-    if (empty($keterangan)) { array_push($errors, "Sila masukkan laporan kerosakan"); };
-
-    // Jika Permohonan baru tiada ralat
-
-
-
-
-    $query = "INSERT INTO permohonan (sekolah, tarikh, no_tiket , kod_sekolah, nama_pelapor, jawatan_pelapor, telefon_pelapor, email, keterangan)VALUES('$sekolah','$date', '$id' , '$kod_sekolah', '$nama_pelapor', '$jawatan_pelapor', '$no_hubungi', '$email', '$keterangan')";
-      
-
-    mysqli_query($conn, $query);
-
-
-
-if (mysqli_query($conn, $query)) {
-    echo "Laporan anda telah berjaya dihantar";
-} else {
-    echo "Error: " . $query . "<br>" . mysqli_error($conn);
-}
-
-mysqli_close($conn);
-
-      //$_SESSION['success'] = "Berjaya Dihantar";
-      //header('location: semak_status.php');
-    
-    
-  
-  ?>
 
 
     </div>
