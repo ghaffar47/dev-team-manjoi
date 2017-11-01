@@ -87,7 +87,7 @@ mysqli_query($conn, $query);
   
 
   $new = mysqli_insert_id($conn);
-  $pilih = "SELECT no_tiket FROM permohonan WHERE id_mohon = '30'" ;
+  $pilih = "SELECT no_tiket FROM permohonan WHERE id_mohon = $new" ;
 
   $result = mysqli_query($conn, $pilih);
   $tiketing = mysqli_fetch_assoc($result);
