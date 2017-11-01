@@ -82,13 +82,21 @@ $query = "INSERT INTO permohonan (sekolah, no_tiket , kod_sekolah, nama_pelapor,
 
 //$query = "INSERT INTO permohonan (SEKOLAH, kod_sekolah) VALUES ('$sekolah', '$kod_sekolah')";
 
-mysqli_query($conn, $query); 
+mysqli_query($conn, $query);
+
+  
+
+  $new = mysqli_insert_id($conn);
+  $pilih = "SELECT no_tiket FROM permohonan WHERE id_mohon = '30'" ;
+
+  $result = mysqli_query($conn, $pilih);
+  $tiketing = mysqli_fetch_assoc($result);
 
 mysqli_close($conn);
 
 //echo "<script type='text/javascript'>alert('anda telah berjaya menghantar permohonan')</script>";
 echo '<script type="text/javascript">'; 
-echo 'alert("anda telah berjaya menghantar permohonan, sekian terima kasih");'; 
+echo 'alert("anda telah berjaya menghantar permohonan, sekian terima kasih..... sila salin no tiket anda untuk rujukan semula '.$tiketing['no_tiket'].'");'; 
 echo 'window.location = "index.php";';
 echo '</script>';
     }else{
@@ -96,10 +104,6 @@ echo '</script>';
     }
 }    
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -112,7 +116,6 @@ echo '</script>';
   $page = 'mohon' ; 
   include 'include/header.php';
   include 'include/topnav.php';
-  //include 'include/function.php';
   ?>
 
         <!-- /. NAV SIDE  -->
