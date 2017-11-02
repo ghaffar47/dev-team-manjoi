@@ -34,7 +34,7 @@ $result = $conn->query($sql);
 
 echo "<p><b> Senarai Pengguna</b></p>";
 echo "<table border='1' cellpadding='10'>";
-echo "<tr><th>ID Pengguna</th><th>Nama Pengguna</th><th>Alamat Email</th><th>Level Pengguna</th><th></th><th></th></tr>";
+echo "<tr><th>ID Pengguna</th><th>Nama Pengguna</th><th>Alamat Email</th><th>Level Pengguna</th><th>PPD</th><th></th><th></tr><th></th>";
 
     // loop through results of database query, displaying them in teh table
 
@@ -52,9 +52,11 @@ echo "<tr><th>ID Pengguna</th><th>Nama Pengguna</th><th>Alamat Email</th><th>Lev
 
         echo '<td>' . $row['level_user'] . '</td>';
 
-        echo '<td><a href="edit.php?id=' . $row['id_user'] . '">Edit</a></td>';
+        echo '<td>' . $row['ppd'] . '</td>';
 
-        echo '<td><a href="delete.php?id='.$row['id_user'] . '">Delete</a></td>';
+        echo '<td><a href="record.php?id=' . $row['id_user'] . '">Edit</a></td>';
+
+        echo '<td><a href="delete.php?id='. $row['id_user'] . '">Delete</a></td>';
     }
 
     //close table
