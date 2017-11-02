@@ -14,8 +14,7 @@
   
   $errors = "";
 
-  // connect to database
-  $db = mysqli_connect("localhost", "root", "", "smart-team");
+ 
 
   // insert a quote if submit button is clicked
   if (isset($_POST['submit'])) {
@@ -25,7 +24,7 @@
     }else{
       $sekolah = $_POST['sekolah'];
       $query = "INSERT INTO permohonan (tarikh, no_tiket, sekolah, kod_sekolah, status) VALUES ( '$tarikh', '$no_tiket', '$sekolah', '$kod_sekolah', '$status')";
-      mysqli_query($db, $query);
+      mysqli_query($conn, $query);
       header('location: ppd_senarai_permohonan.php');
     }
   }  
@@ -34,17 +33,18 @@
   if (isset($_GET['del_sekolah'])) {
     $id_mohon = $_GET['del_sekolah'];
 
-    mysqli_query($db, "DELETE FROM permohonan WHERE id_mohon=".$id_mohon);
+    mysqli_query($conn, "DELETE FROM permohonan WHERE id_mohon=".$id_mohon);
     header('location: ppd_senarai_permohonan.php');
   }
 
   // select all sekolah if page is visited or refreshed
-  $permohonan = mysqli_query($db, "SELECT * FROM permohonan");
+  $permohonan = mysqli_query($conn, "SELECT * FROM permohonan");
   
   // edit/update data
   if(isset($_GET['no_tiket'])){
 $sekolah = $_GET['sekolah'];
 $no_tiket = $_GET['no_tiket'];
+$
 $query="update tasks set status='$sekolah' where id_mohon='$no_tiket'";
 $result = $mysqli->query($query) or die($mysqli->error.LINE);
 $result = $mysqli->affected_rows;
@@ -87,6 +87,7 @@ $json_response = json_encode($result);
                     <td class="tarikh"> <?php echo $row['tarikh']; ?> </td>
                     <td class="no_tiket"> <?php echo $row['no_tiket']; ?> </td>
           <td class="sekolah"> <?php echo $row['sekolah']; ?> </td>
+                    <td class="kod_sekolah"> <?php echo $row['kod_sekolah']; ?> </td>
                     <td class="kod_sekolah"> <?php echo $row['kod_sekolah']; ?> </td>
                     <td class="status"> <?php echo $row['status']; ?> </td>
                     <td class="update"><a href="permohonan_status.php?no_tiket=<?php echo $row['id_mohon'] ?>&sekolah=<?php echo $row['sekolah'] ?>">Kemaskini</a> 
