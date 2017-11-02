@@ -6,6 +6,7 @@
   $page = 'semak' ; 
   include 'include/header.php';
   include 'include/topnav.php';
+  include 'include/dbconnect.php';
  ?>
 
         <!-- /. NAV SIDE  -->
@@ -30,6 +31,7 @@
 			<select name="column">
 				<option value="">Sila Pilih</option>
 				<option value="no_tiket">nombor tiket</option>
+				<option value="kod_sekolah">Kod Sekolah</option>
 				
 			</select>	
 			<input type="submit" name="submit" value="Semak">
@@ -38,9 +40,9 @@
 		</form>
     <?php
 	if (isset($_POST['submit'])) {
-		$connection = new mysqli("localhost", "root", "", "smart-team");
-		$q = $connection->real_escape_string($_POST['q']);
-		$column = $connection->real_escape_string($_POST['column']);
+		
+		$q = $conn->real_escape_string($_POST['q']);
+		$column = $conn->real_escape_string($_POST['column']);
 		
 		
 		
@@ -48,12 +50,18 @@
 			$column = "no_tiket";
 			
 
-		$sql = $connection->query("SELECT * FROM permohonan WHERE $column LIKE '%$q%'");
+		$sql = $conn->query("SELECT * FROM permohonan WHERE $column LIKE '%$q%'");
 		if ($sql->num_rows > 0) {
 			while ($data = $sql->fetch_array())
 				echo "NOMBOR TIKET : " . $data['no_tiket'] ."<br>"."KOD SEKOLAH : " . $data['kod_sekolah'] ."<br>"."STATUS PERMOHONAN : " . $data['status']."<br>";
 		
-		} else
+		}else
+
+
+		
+
+
+
 			echo "Your search query doesn't match any data!";
 			
 		
