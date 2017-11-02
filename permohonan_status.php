@@ -11,23 +11,28 @@
   include 'include/function.php';
   
   
-  // connect to database
-  $db = mysqli_connect("localhost", "root", "", "smart-team");
+ 
   
   $id_mohon = $_REQUEST['no_tiket'];
 
-  $permohonan = mysqli_query($db, "SELECT * FROM permohonan WHERE id_mohon=".$id_mohon);
+  $permohonan = mysqli_query($conn, "SELECT * FROM permohonan WHERE id_mohon=".$id_mohon);
   $row = mysqli_fetch_array($permohonan);
   
   // edit/update data
-  if($_POST["submit"]): 
-      if(isset($_GET['no_tiket'])){
-    $sekolah = $_GET['sekolah'];
-    $no_tiket = $_GET['no_tiket'];
-    $query="update permohonan set sekolah='".$_POST["sekolah"]."',jawatanpelapor='".$_POST["jawatanpelapor"]."' where id_mohon='".$_POST["no_tiket"]."'";
-    $result = $mysqli->query($query) or die($mysqli->error.LINE);
+  if(isset($_POST["submit"])) {
+    $no_tiket = $_POST['no_tiket'];
+    $pantau = $_POST['laporan_pantau'];  
+    $kumpulan = $_POST['kumpulan'];
+    $laporan_selesai = $_POST['laporan_selesai'];
+    $status = $_POST['status'];
+    $query = "UPDATE permohonan SET laporan_pantau = '$pantau', kumpulan = '$kumpulan' , laporan_selesai = '$laporan_selesai', status = '$status' WHERE no_tiket = '$no_tiket'";
+    mysqli_query($conn, $query);
+    echo '<script type="text/javascript">'; 
+    echo 'alert("KEMASKINI BERJAYA");'; 
+    echo 'window.location = "ppd_senarai_permohonan.php";';
+    echo '</script>';
     }
-  endif;
+  
  ?>
  
   </head>
@@ -46,7 +51,7 @@
                  <hr />
                  <div class="panel panel-default">
                         <div class="panel-heading">
-                            Lengkapkan borang ini</div>
+                            PROSES KERJA</div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -65,7 +70,7 @@
         
        <p><strong>NAMA SEKOLAH:</strong><label class="form-control"><?php echo $row['sekolah'];?></label>
        
-       <input type="hidden" name="no_tiket" id="hiddenField" value="<?php echo $row['id_mohon'];?>">
+       <input type="hidden" name="no_tiket" id="hiddenField" value="<?php echo $row['no_tiket'];?>">
       
         
         <strong>KOD SEKOLAH:</strong><label class="form-control"><?php echo $row['kod_sekolah'];?></label>
