@@ -43,7 +43,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>KEMASKINI STATUS PERMOHONAN</h2>   
+                     <h2>STATUS PERMOHONAN</h2>   
                         
                        
                     </div>
