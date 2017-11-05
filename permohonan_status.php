@@ -25,8 +25,9 @@
 	$pegawai_pantau = $_POST['pegawai_pantau'];  
     $kumpulan = $_POST['kumpulan'];
     $laporan_selesai = $_POST['laporan_selesai'];
+	$komen_jpn = $_POST['komen_jpn'];
     $status = $_POST['status'];
-    $query = "UPDATE permohonan SET laporan_pantau = '$pantau', pegawai_pantau = '$pegawai_pantau', kumpulan = '$kumpulan' , laporan_selesai = '$laporan_selesai', status = '$status' WHERE no_tiket = '$no_tiket'";
+    $query = "UPDATE permohonan SET laporan_pantau = '$pantau', pegawai_pantau = '$pegawai_pantau', kumpulan = '$kumpulan' , laporan_selesai = '$laporan_selesai', status = '$status', komen_jpn = '$komen_jpn' WHERE no_tiket = '$no_tiket'";
     mysqli_query($conn, $query);
     echo '<script type="text/javascript">'; 
     echo 'alert("KEMASKINI BERJAYA");'; 
@@ -109,6 +110,8 @@
         
         <strong>STATUS : </strong>
         <label name="status" rows="20" class="form-control" style="color:#00F"><?php echo $row['status'];?></label>
+        
+        <strong>KOMEN JPN:</strong><label class="form-control" style="color:#00F"><?php echo $row['komen_jpn'];?></label>
         
         
         

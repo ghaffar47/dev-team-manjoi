@@ -24,10 +24,9 @@
     $pantau = $_POST['laporan_pantau'];
 	$pegawai_pantau = $_POST['pegawai_pantau'];  
     $kumpulan = $_POST['kumpulan'];
-    $laporan_selesai = $_POST['laporan_selesai'];
     $status = $_POST['status'];
 	$komen_jpn = $_POST['komen_jpn'];
-    $query = "UPDATE permohonan SET laporan_pantau = '$pantau', pegawai_pantau = '$pegawai_pantau', kumpulan = '$kumpulan' , laporan_selesai = '$laporan_selesai', status = '$status' komen_jpn = '$komen_jpn' WHERE no_tiket = '$no_tiket'";
+    $query = "UPDATE permohonan SET laporan_pantau = '$pantau', pegawai_pantau = '$pegawai_pantau', kumpulan = '$kumpulan' , laporan_selesai = '$laporan_selesai', status = '$status', komen_jpn = '$komen_jpn' WHERE no_tiket = '$no_tiket'";
     mysqli_query($conn, $query);
     echo '<script type="text/javascript">'; 
     echo 'alert("KEMASKINI BERJAYA");'; 
@@ -109,7 +108,7 @@
         <label name="laporan_selesai" class="form-control" style="color:#00F"><?php echo $row['laporan_selesai'];?></label>
         
         <strong>STATUS : </strong>
-        <label name="status" class="form-control" style="color:#00F"><?php echo $row['status'];?></label>
+        <input name="status" class="form-control" style="color:#00F" value="<?php echo $row['status'];?>">
         
         <strong>KOMEN JPN : </strong><label style="color:#F00">**Isi Jika Perlu</label>
         <textarea name="komen_jpn" rows="20" class="form-control" style="color:#00F"><?php echo $row['komen_jpn'];?></textarea>
