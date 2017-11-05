@@ -73,6 +73,8 @@ $json_response = json_encode($result);
                                             <th>Kod Sekolah</th>
                                             <th>Status</th>
                                             <th>Tindakan</th>
+                                            <th>Laporan Pantau</th>
+                                            <th>Laporan Selesai</th>
                                             <th>Hapus</th>
                                         </tr>
                                     </thead>  
@@ -83,14 +85,15 @@ $json_response = json_encode($result);
     <tbody>
       <?php $i = 1; while ($row = mysqli_fetch_array($permohonan)) { ?>
         <tr>
-          <td> <?php echo $i; ?> </td>
-                    <td class="tarikh"> <?php echo $row['tarikh']; ?> </td>
-                    <td class="no_tiket"> <?php echo $row['no_tiket']; ?> </td>
+        <td> <?php echo $i; ?> </td>
+          <td class="tarikh"> <?php echo $row['tarikh']; ?> </td>
+          <td class="no_tiket"> <?php echo $row['no_tiket']; ?> </td>
           <td class="sekolah"> <?php echo $row['sekolah']; ?> </td>
-                    <td class="kod_sekolah"> <?php echo $row['kod_sekolah']; ?> </td>
-                    <td class="kod_sekolah"> <?php echo $row['kod_sekolah']; ?> </td>
-                    <td class="status"> <?php echo $row['status']; ?> </td>
-                    <td class="update"><a href="permohonan_status.php?no_tiket=<?php echo $row['id_mohon'] ?>&sekolah=<?php echo $row['sekolah'] ?>">Kemaskini</a> 
+          <td class="kod_sekolah"> <?php echo $row['kod_sekolah']; ?> </td>
+          <td class="status"> <?php echo $row['status']; ?> </td>
+          <td class="update"><a href="permohonan_status.php?no_tiket=<?php echo $row['id_mohon'] ?>&sekolah=<?php echo $row['sekolah'] ?>">Lihat</a> 
+          <td class="update"><a href="laporan_pantau.php?no_tiket=<?php echo $row['id_mohon'] ?>&sekolah=<?php echo $row['sekolah'] ?>">Kemaskini</a> 
+          <td class="update"><a href="laporan_selesai.php?no_tiket=<?php echo $row['id_mohon'] ?>&sekolah=<?php echo $row['sekolah'] ?>">Kemaskini</a> 
           <td class="delete"> 
             <a onclick="return confirm('Adakah anda pasti untuk padam maklumat ini?')" href="ppd_senarai_permohonan.php?del_sekolah=<?php echo $row['id_mohon'] ?>">x</a> 
           </td>
