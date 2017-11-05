@@ -56,7 +56,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h3>Borang Status Permohonan Smart Team</h3>
+                                    <h3>Laporan Permohonan Smart Team</h3>
                                                                   
                                     
      <form method="post" action="permohonan_status.php" class="input_form">
@@ -66,45 +66,45 @@
  
         
      <div class="form-group">
-        <strong>NOMBOR TIKET:</strong><label class="form-control"><?php echo $row['no_tiket'];?></label>
-        <strong>TARIKH PERMOHONAN:</strong><label class="form-control"><?php echo $row['tarikh'];?></label>
+        <strong>NOMBOR TIKET:</strong><label class="form-control" style="color:#00F"><?php echo $row['no_tiket'];?></label>
+        <strong>TARIKH PERMOHONAN:</strong><label class="form-control" style="color:#00F"><?php echo $row['tarikh'];?></label>
         
-       <p><strong>NAMA SEKOLAH:</strong><label class="form-control"><?php echo $row['sekolah'];?></label>
+       <p><strong>NAMA SEKOLAH:</strong><label class="form-control" style="color:#00F"><?php echo $row['sekolah'];?></label>
        
        <input type="hidden" name="no_tiket" id="hiddenField" value="<?php echo $row['no_tiket'];?>">
       
         
-        <strong>KOD SEKOLAH:</strong><label class="form-control"><?php echo $row['kod_sekolah'];?></label>
+        <strong>KOD SEKOLAH:</strong><label class="form-control" style="color:#00F"><?php echo $row['kod_sekolah'];?></label>
         
         
-        <strong>NAMA PEMOHON:</strong><label class="form-control"><?php echo $row['nama_pelapor'];?></label>
+        <strong>NAMA PEMOHON:</strong><label class="form-control" style="color:#00F"><?php echo $row['nama_pelapor'];?></label>
        
         
-        <strong>JAWATAN PEMOHON:</strong><label class="form-control"><?php echo $row['jawatan_pelapor'];?></label>
+        <strong>JAWATAN PEMOHON:</strong><label class="form-control" style="color:#00F"><?php echo $row['jawatan_pelapor'];?></label>
         
         
-        <strong>NOMBOR TELEFON:</strong><label class="form-control"><?php echo $row['telefon_pelapor'];?></label>
+        <strong>NOMBOR TELEFON:</strong><label class="form-control" style="color:#00F"><?php echo $row['telefon_pelapor'];?></label>
        
         
-         <strong>EMAIL RASMI:</strong><label class="form-control"><?php echo $row['email'];?></label>
+         <strong>EMAIL RASMI:</strong><label class="form-control" style="color:#00F"><?php echo $row['email'];?></label>
          
         
-        <strong>KETERANGAN:</strong><label class="form-control"><?php echo $row['keterangan'];?></label>
+        <strong>KETERANGAN:</strong><label class="form-control" style="color:#00F"><?php echo $row['keterangan'];?></label>
        
         
-  <strong>TINDAKAN PERMOHONAN</strong><label class="form-control"><?php echo $row['laporan_pantau'];?></label>
+  <strong>TINDAKAN PERMOHONAN</strong><label class="form-control" style="color:#00F"><?php echo $row['laporan_pantau'];?></label>
   
-  <strong>PEGAWAI YANG TERLIBAT UNTUK PEMANTAUAN PERMOHONAN : </strong><label class="form-control"><?php echo $row['pegawai_pantau'];?></label>
+  <strong>PEGAWAI YANG TERLIBAT UNTUK PEMANTAUAN PERMOHONAN : </strong><label class="form-control" style="color:#00F"><?php echo $row['pegawai_pantau'];?></label>
         
         
-        <strong>SENARAI AHLI YANG TERLIBAT </strong><label class="form-control"><?php echo $row['kumpulan'];?></label>
+        <strong>SENARAI AHLI YANG TERLIBAT </strong><label class="form-control" style="color:#00F"><?php echo $row['kumpulan'];?></label>
         
         
         <strong>LAPORAN SELESAI TUGAS</strong><label style="color:#F00">**Perlu dilengkapkan</label>
-        <textarea name="laporan_selesai" rows="20" class="form-control"><?php echo $row['laporan_selesai'];?></textarea>
+        <textarea name="laporan_selesai" rows="20" class="form-control" style="color:#00F"><?php echo $row['laporan_selesai'];?></textarea>
         
         <strong>STATUS : </strong><label style="color:#F00">**Perlu dilengkapkan (DALAM PROSES/SELESAI)</label>
-        <input name="status" rows="20" class="form-control" value="<?php echo $row['status'];?>">
+        <input name="status" rows="20" class="form-control"  style="color:#00F" value="<?php echo $row['status'];?>">
         
         
         
