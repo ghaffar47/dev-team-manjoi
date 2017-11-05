@@ -27,39 +27,58 @@
 		<table width="400">
 		  
 		  <div>
-			<tr><th><p1></p1> </th>
+			<tr><th width="134"><p1></p1> </th>
 			</tr>
 		</div>
 		<div class="input-group">
 			<tr><th>Nama Pegawai :</th>
-			<th>Puan Pegawai PPD 1</th></tr>
+			<th width="254">Cik Rabiatuladawiyah Bt. Bahari </th></tr>
+            <tr><th></th>
+			<th>Penolong PPD Pengurusan Maklumat (ICT)</th></tr>
 		</div>
 		<div class="input-group">
-			<tr><th><label>Jawatan</label></th>
-			<th>Pegawai ICT</th></tr>
-		</div>
-        <div class="input-group">
-			<tr><th><label>Nombor Telefon</label></th>
-			<th>05-123 4567</th>
+			<tr><th><label>Email Rasmi :</label></th>
+			<th>rabiatul.bahari@moe.gov.my</th></tr>
 		</div>
 		</table>
         
         <hr />
         
-        <table width="400">
-        <div class="input-group">
-			<tr><th>Nama Pegawai :</th>
-			<th>Encik Pegawai PPD 2</th></tr>
+       <table width="400">
+		  
+		  <div>
+			<tr><th width="131"><p1></p1> </th>
+			</tr>
 		</div>
 		<div class="input-group">
-			<tr><th><label>Jawatan</label></th>
-			<th>Pegawai ICT</th></tr>
+			<tr>
+			  <th>Nama Pegawai :</th>
+			<th width="257">En Mohd Nordin b. Ismail</th></tr>
+            <tr><th></th>
+			<th>Penyelia Teknologi Maklumat dan Komunikasi</th></tr>
 		</div>
-        <div class="input-group">
-			<tr><th><label>Nombor Telefon</label></th>
-			<th>05-123 4567</th>
+		<div class="input-group">
+			<tr><th><label>Email Rasmi :</label></th>
+			<th>mnordin.ismail@moe.gov.my</th></tr>
 		</div>
-		
+		</table>
+        <hr />
+        <table width="400">
+		  
+		  <div>
+			<tr><th width="131"><p1></p1> </th>
+			</tr>
+		</div>
+		<div class="input-group">
+			<tr><th>No. tel (AM):</th>
+			<th width="250">05-254 4877 / 05-243 7293 </th></tr>
+            <tr><th>No. tel (TT):</th>
+			<th>05-241 0972</th></tr>
+		</div>
+		<div class="input-group">
+			<tr><th><label>No. Faks :</label></th>
+			<th>05-241 9154</th></tr>
+		</div>
 		</table>
 		</form>
     
@@ -71,41 +90,50 @@
 		<table width="400">
 		  
 		  <div>
-			<tr><th><p1></p1> </th>
+			<tr><th width="134"><p1></p1> </th>
 			</tr>
 		</div>
 		<div class="input-group">
 			<tr><th>Nama Pegawai :</th>
-			<th>Encik Pegawai JPN 1</th></tr>
+			<th width="254">Pn. Suhana Bt Mohd Alias</th></tr>
+            <tr><th></th>
+			<th>Pegawai Teknologi Maklumat</th></tr>
 		</div>
 		<div class="input-group">
-			<tr><th><label>Jawatan</label></th>
-			<th>Pegawai ICT</th></tr>
+			<tr><th><label>Email Rasmi :</label></th>
+			<th>suhana.malias@moe.gov.my</th></tr>
 		</div>
         <div class="input-group">
-			<tr><th><label>Nombor Telefon</label></th>
-			<th>05-123 4567</th>
+			<tr><th><label>Nombor Telefon :</label></th>
+			<th>sambungan 5199</th></tr>
 		</div>
-        </table>
+		</table>
         
         <hr />
         
-        <table width="400">
-        <div class="input-group">
-			<tr><th>Nama Pegawai :</th>
-			<th>Puan Pegawai JPN 2</th></tr>
+       <table width="400">
+		  
+		  <div>
+			<tr><th width="131"><p1></p1> </th>
+			</tr>
 		</div>
 		<div class="input-group">
-			<tr><th><label>Jawatan</label></th>
-			<th>Pegawai ICT</th></tr>
+			<tr>
+			  <th>Nama Pegawai :</th>
+			<th width="257">Pn Siti Balkis Bt. Abdul Hamid</th></tr>
+            <tr><th></th>
+			<th>Penolong Pegawai Teknologi Maklumat</th></tr>
+		</div>
+		<div class="input-group">
+			<tr><th><label>Email Rasmi :</label></th>
+			<th>balkis.hamid@moe.gov.my</th></tr>
 		</div>
         <div class="input-group">
-			<tr><th><label>Nombor Telefon</label></th>
-			<th>05-123 4567</th>
+			<tr><th><label>Nombor Telefon :</label></th>
+			<th>sambungan 5202</th></tr>
 		</div>
-		
 		</table>
-        <hr/>
+        
 	</form>
     </div>
              <!-- /. PAGE INNER  -->
