@@ -5,7 +5,7 @@
 <head>
 
 <?php 
-  $page ='mohon';
+  $page ='senarai';
   include 'include/header.php';
   include 'include/topnav_2.php';
   include 'include/function.php';
@@ -21,11 +21,12 @@
   // edit/update data
   if(isset($_POST["submit"])) {
     $no_tiket = $_POST['no_tiket'];
-    $pantau = $_POST['laporan_pantau'];  
+    $pantau = $_POST['laporan_pantau'];
+	$pegawai_pantau = $_POST['pegawai_pantau'];  
     $kumpulan = $_POST['kumpulan'];
     $laporan_selesai = $_POST['laporan_selesai'];
     $status = $_POST['status'];
-    $query = "UPDATE permohonan SET laporan_pantau = '$pantau', kumpulan = '$kumpulan' , laporan_selesai = '$laporan_selesai', status = '$status' WHERE no_tiket = '$no_tiket'";
+    $query = "UPDATE permohonan SET laporan_pantau = '$pantau', pegawai_pantau = '$pegawai_pantau', kumpulan = '$kumpulan' , laporan_selesai = '$laporan_selesai', status = '$status' WHERE no_tiket = '$no_tiket'";
     mysqli_query($conn, $query);
     echo '<script type="text/javascript">'; 
     echo 'alert("KEMASKINI BERJAYA");'; 
@@ -65,10 +66,10 @@
  
         
      <div class="form-group">
-        <p><strong>NOMBOR TIKET: <?php echo $row['no_tiket'];?></strong></p>
-        <p><strong>TARIKH PERMOHONAN: <?php echo $row['tarikh'];?></strong></p>
+        <strong>NOMBOR TIKET:</strong><label class="form-control"><?php echo $row['no_tiket'];?></label>
+        <strong>TARIKH PERMOHONAN:</strong><label class="form-control"><?php echo $row['tarikh'];?></label>
         
-       <p><strong>NAMA SEKOLAH:</strong><label class="form-control"><?php echo $row['sekolah'];?></label>
+       <strong>NAMA SEKOLAH:</strong><label class="form-control"><?php echo $row['sekolah'];?></label>
        
        <input type="hidden" name="no_tiket" id="hiddenField" value="<?php echo $row['no_tiket'];?>">
       
@@ -89,22 +90,25 @@
          
         
         <strong>KETERANGAN:</strong>
-        <textarea name="keterangan" rows="20" class="form-control"><?php echo $row['keterangan'];?></textarea>
+        <label name="keterangan" rows="20" class="form-control"><?php echo $row['keterangan'];?></label>
        
         
   <strong>TINDAKAN PERMOHONAN</strong>
-  <textarea name="laporan_pantau" rows="20" class="form-control"><?php echo $row['laporan_pantau'];?></textarea>
+  <label name="laporan_pantau" rows="20" class="form-control"><?php echo $row['laporan_pantau'];?></label>
+  
+  <strong>PEGAWAI PEMANTAUAN PERMOHONAN</strong>
+  <label name="pegawai_pantau" rows="20" class="form-control"><?php echo $row['pegawai_pantau'];?></label>
         
         
         <strong>SENARAI AHLI YANG TERLIBAT </strong>
-        <textarea name="kumpulan" rows="20" class="form-control"><?php echo $row['kumpulan'];?></textarea>
+        <label name="kumpulan" rows="20" class="form-control"><?php echo $row['kumpulan'];?></label>
         
         
         <strong>LAPORAN SELESAI TUGAS</strong>
-        <textarea name="laporan_selesai" rows="20" class="form-control"><?php echo $row['laporan_selesai'];?></textarea>
+        <label name="laporan_selesai" rows="20" class="form-control"><?php echo $row['laporan_selesai'];?></label>
         
         <strong>STATUS : </strong>
-        <input name="status" rows="20" class="form-control" value="<?php echo $row['status'];?>">
+        <label name="status" rows="20" class="form-control"><?php echo $row['status'];?></label>
         
         
         
