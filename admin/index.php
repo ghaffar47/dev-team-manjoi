@@ -26,7 +26,6 @@ include ('include/topnav.php') ;
 <?php include ('include/function.php') ?>
 <?php include ('include/errors.php') ?>
 
-
  <table width="310">
 		<div class="input-group">
 			<tr><th>Nama Pengguna</th>
@@ -38,39 +37,21 @@ include ('include/topnav.php') ;
 		</div>
 		<div class="input-group">
 			<tr><th><label>Katalaluan</label></th>
-			<th><input type="password" name="password" > </th></tr>
+			<th><input type="password" name="password_1"></th></tr>
 		</div>
 		<div class="input-group">
 			<tr>
 			  <th>Sahkan Katalaluan</th>
-			<th><input type="password" name="password2" ></th></tr>
+			<th><input type="password" name="password_2"></th></tr>
 		</div>
         <div class="input-group">
 			<tr>
 			  <th>Level Pengguna</th>
-			<th><select name="level_user">
-            <option value="Select">Select</option>
-            <option value="ppd">ppd</option>
-            <option value="jtk">jtk</option>
-            <option value="admin">admin</option>
-            </select>
-            </th></tr>
-		</div>
-		<div class="input-group">
-			<tr>
-			  <th>PPD</th>
-			<th><select name="ppd">
-            <option value="Select">Select</option>
-            <option value="PPD BATANG PADANG">PPD BATANG PADANG</option>
-            <option value="PPD MANJUNG">PPD MANJUNG</option>
-            <option value="PPD KRIAN">PPD KRIAN</option>
-            <option value="PPD HILIR PERAK">PPD HILIR PERAK</option>
-            <option value="PPD PERAK TENGAH">PPD PERAK TENGAH</option>
-            <option value="PPD KUALA KANGSAR">PPD KUALA KANGSAR</option>
-            <option value="PPD LARUT/MATANG/SELAMA">PPD LMS</option>
-            <option value="PPD KINTA UTARA">PPD KINTA UTARA</option>
-            <option value="PPD KINTA SELATAN">PPD KINTA SELATAN</option>
-
+			<th><select type="level_user" name="level_user">
+            <option value="Select">Select</option>}
+            <option value="sekolah"> jpn </option>
+            <option value="ppd"> ppd</option>
+            <option value="admin"> admin</option>
             </select>
             </th></tr>
 		</div>
