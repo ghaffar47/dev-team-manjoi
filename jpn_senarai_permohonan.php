@@ -25,7 +25,7 @@
       $sekolah = $_POST['sekolah'];
       $query = "INSERT INTO permohonan (tarikh, no_tiket, sekolah, kod_sekolah, status) VALUES ( '$tarikh', '$no_tiket', '$sekolah', '$kod_sekolah', '$status')";
       mysqli_query($conn, $query);
-      header('location: ppd_senarai_permohonan.php');
+      header('location: jpn_senarai_permohonan.php');
     }
   }  
 
@@ -34,7 +34,7 @@
     $id_mohon = $_GET['del_sekolah'];
 
     mysqli_query($conn, "DELETE FROM permohonan WHERE id_mohon=".$id_mohon);
-    header('location: ppd_senarai_permohonan.php');
+    header('location: jpn_senarai_permohonan.php');
   }
 
   // select all sekolah if page is visited or refreshed
@@ -88,7 +88,7 @@ $json_response = json_encode($result);
           <td class="sekolah"> <?php echo $row['sekolah']; ?> </td>
           <td class="kod_sekolah"> <?php echo $row['kod_sekolah']; ?> </td>
           <td class="status"> <?php echo $row['status']; ?> </td>
-          <td class="update"><a href="permohonan_status.php?no_tiket=<?php echo $row['id_mohon'] ?>&sekolah=<?php echo $row['sekolah'] ?>">Lihat</a></td>
+          <td class="update"><a href="jpn_status.php?no_tiket=<?php echo $row['id_mohon'] ?>&sekolah=<?php echo $row['sekolah'] ?>">Lihat</a></td>
         </tr>
       <?php $i++; } ?>  
     </tbody>
