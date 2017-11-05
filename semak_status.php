@@ -31,7 +31,6 @@
 			<select name="column">
 				<option value="">Sila Pilih</option>
 				<option value="no_tiket">nombor tiket</option>
-				<option value="kod_sekolah">Kod Sekolah</option>
 				
 			</select>	
 			<input type="submit" name="submit" value="Semak">
