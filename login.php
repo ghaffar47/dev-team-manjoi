@@ -36,9 +36,9 @@
 			$_SESSION['password']=$pass;
 			$_SESSION['id_user']=$id;
 			$_SESSION['level_user']=$level;
-			if($level=='sekolah'){
+			if($level=='JPN'){
 			?>
-			<script>window.location.href='index.php'</script>
+			<script>window.location.href='index_jpn.php'</script>
 			<?php
             } 
 			if($level=='admin'){
