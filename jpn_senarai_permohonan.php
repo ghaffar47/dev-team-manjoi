@@ -25,7 +25,7 @@
       $sekolah = $_POST['sekolah'];
       $query = "INSERT INTO permohonan (tarikh, no_tiket, sekolah, kod_sekolah, status) VALUES ( '$tarikh', '$no_tiket', '$sekolah', '$kod_sekolah', '$status')";
       mysqli_query($conn, $query);
-      header('location: jpn_senarai_permohonan.php');
+      header('location: ppd_senarai_permohonan.php');
     }
   }  
 
@@ -34,7 +34,7 @@
     $id_mohon = $_GET['del_sekolah'];
 
     mysqli_query($conn, "DELETE FROM permohonan WHERE id_mohon=".$id_mohon);
-    header('location: jpn_senarai_permohonan.php');
+    header('location: ppd_senarai_permohonan.php');
   }
 
   // select all sekolah if page is visited or refreshed

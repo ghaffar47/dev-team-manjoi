@@ -38,7 +38,9 @@
   }
 
   // select all sekolah if page is visited or refreshed
-  $permohonan = mysqli_query($conn, "SELECT * FROM permohonan ORDER BY tarikh DESC  ");
+  $permohonan = mysqli_query($conn, "SELECT * FROM permohonan ORDER BY tarikh DESC ");
+  
+  
   
   // edit/update data
   if(isset($_GET['no_tiket'])){

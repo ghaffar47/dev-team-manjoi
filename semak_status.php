@@ -6,7 +6,6 @@
   $page = 'semak' ; 
   include 'include/header.php';
   include 'include/topnav.php';
-  include 'include/dbconnect.php';
  ?>
 
         <!-- /. NAV SIDE  -->
@@ -39,9 +38,9 @@
 		</form>
     <?php
 	if (isset($_POST['submit'])) {
-		
-		$q = $conn->real_escape_string($_POST['q']);
-		$column = $conn->real_escape_string($_POST['column']);
+		$connection = new mysqli("localhost", "root", "", "smart-team");
+		$q = $connection->real_escape_string($_POST['q']);
+		$column = $connection->real_escape_string($_POST['column']);
 		
 		
 		
@@ -49,18 +48,12 @@
 			$column = "no_tiket";
 			
 
-		$sql = $conn->query("SELECT * FROM permohonan WHERE $column LIKE '%$q%'");
+		$sql = $connection->query("SELECT * FROM permohonan WHERE $column LIKE '%$q%'");
 		if ($sql->num_rows > 0) {
 			while ($data = $sql->fetch_array())
 				echo "NOMBOR TIKET : " . $data['no_tiket'] ."<br>"."KOD SEKOLAH : " . $data['kod_sekolah'] ."<br>"."STATUS PERMOHONAN : " . $data['status']."<br>";
 		
-		}else
-
-
-		
-
-
-
+		} else
 			echo "Your search query doesn't match any data!";
 			
 		

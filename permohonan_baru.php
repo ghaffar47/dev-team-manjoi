@@ -144,6 +144,13 @@ echo '</script>';
 	
         
  		<div class="form-group">
+        <label>PPD :<font color="#FF0000">* <span><?php echo $sekolaherr; ?></span></font></label>
+        <select id="ppd" name="ppd">
+          <option value="Kinta Utara">Kinta Utara</option>
+          <option value="Kinta Selatan">Kinta Selatan</option>
+          <option value="Perak Tengah">Perak Tengah</option>
+        </select>
+        
         <label>NAMA SEKOLAH<font color="#FF0000">* <span><?php echo $sekolaherr; ?></span></font></label>
         <input class="form-control" type="text" name="sekolah" id="sekolah" value="<?php echo $sekolah; ?>">
 
