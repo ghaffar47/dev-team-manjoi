@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2017 at 06:36 PM
+-- Generation Time: Apr 26, 2018 at 09:02 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -53,6 +53,7 @@ CREATE TABLE `permohonan` (
   `id_mohon` int(255) NOT NULL,
   `tarikh` date NOT NULL,
   `no_tiket` varchar(100) NOT NULL,
+  `ppd` enum('KINTA UTARA','KINTA SELATAN','BATANG PADANG','MANJUNG','KERIAN','KUALA KANGSAR','HILIR PERAK','LARUT MATANG @ SELAMA','HULU PERAK','PERAK TENGAH','BAGAN DATUK') NOT NULL,
   `sekolah` varchar(100) NOT NULL,
   `kod_sekolah` varchar(100) NOT NULL,
   `nama_pelapor` varchar(100) NOT NULL,
@@ -60,7 +61,7 @@ CREATE TABLE `permohonan` (
   `telefon_pelapor` varchar(100) NOT NULL,
   `email` varchar(200) NOT NULL,
   `keterangan` varchar(1000) NOT NULL,
-  `status` enum('DALAM PROSES','SELESAI','','') NOT NULL,
+  `status` enum('DALAM PROSES','DALAM PEMANTAUAN','SELESAI','') NOT NULL,
   `pegawai_pantau` varchar(255) NOT NULL,
   `kumpulan` varchar(100) NOT NULL,
   `laporan_pantau` varchar(1000) NOT NULL,
@@ -72,12 +73,14 @@ CREATE TABLE `permohonan` (
 -- Dumping data for table `permohonan`
 --
 
-INSERT INTO `permohonan` (`id_mohon`, `tarikh`, `no_tiket`, `sekolah`, `kod_sekolah`, `nama_pelapor`, `jawatan_pelapor`, `telefon_pelapor`, `email`, `keterangan`, `status`, `pegawai_pantau`, `kumpulan`, `laporan_pantau`, `laporan_selesai`, `komen_jpn`) VALUES
-(55, '2017-10-11', 'ST656402', 'SMK TUN PERAK', 'ABA1988', 'RAHMAN', 'FT', '012344667889', 'rahman@moe.gov.my', 'penambahan port network makmal komputer', 'DALAM PROSES', '', '', '', '', ''),
-(56, '2017-10-26', 'ST160479', 'SK HAJI MAHMUD', 'ABA2008', 'ZAMZURYANI', 'FA29', '01245810866', 'zamzuryani@moe.edu.my', 'PEMASANGAN CABLE NETWORK DARI MAKMAL KOMPUTER KE MAKMAL SAINS', 'DALAM PROSES', '', '', 'pantau', '', ''),
-(57, '2017-10-26', 'ST333349', 'SK HAJI MAHMUD', 'ABA2008', 'ZAMZURYANI', 'FA29', '0124581086', 'zamzuryani@moe.edu.my', 'PORT INTERNET ROSAK', 'DALAM PROSES', '', '', '', '', ''),
-(58, '2017-10-26', 'ST766622', 'SK HAJI MAHMUD', 'ABA2008', 'ZAMZURYANI', 'FA29', '0124581086', 'zamzuryani@moe.edu.my', 'PORT INTERNET ROSAK', 'DALAM PROSES', '', '', '', '', ''),
-(62, '2017-10-31', 'ST269738', 'SMK BUKIT PASIR', 'ABA2010', 'JULIA MOHAMAD', 'FT19', '0123456789551', 'julia@moe.gov.my', 'test apply', 'DALAM PROSES', 'EN AHMAD BIN MOHAMMED', '', 'akan turun untuk pemantauan kali ke 2', '', '');
+INSERT INTO `permohonan` (`id_mohon`, `tarikh`, `no_tiket`, `ppd`, `sekolah`, `kod_sekolah`, `nama_pelapor`, `jawatan_pelapor`, `telefon_pelapor`, `email`, `keterangan`, `status`, `pegawai_pantau`, `kumpulan`, `laporan_pantau`, `laporan_selesai`, `komen_jpn`) VALUES
+(55, '2017-10-11', 'ST656402', 'KINTA UTARA', 'SMK TUN PERAK', 'ABA1988', 'RAHMAN', 'FT', '012344667889', 'rahman@moe.gov.my', 'penambahan port network makmal komputer', 'DALAM PROSES', '', '', '', '', ''),
+(56, '2017-10-26', 'ST160479', 'KINTA UTARA', 'SK HAJI MAHMUD', 'ABA2008', 'ZAMZURYANI', 'FA29', '01245810866', 'zamzuryani@moe.edu.my', 'PEMASANGAN CABLE NETWORK DARI MAKMAL KOMPUTER KE MAKMAL SAINS', 'DALAM PROSES', '', '', '', '', 'KERJA YANG BAGUS'),
+(57, '2017-10-26', 'ST333349', 'KINTA UTARA', 'SK HAJI MAHMUD', 'ABA2008', 'ZAMZURYANI', 'FA29', '0124581086', 'zamzuryani@moe.edu.my', 'PORT INTERNET ROSAK', 'DALAM PROSES', '', '', '', '', ''),
+(58, '2017-10-26', 'ST766622', 'KINTA UTARA', 'SK HAJI MAHMUD', 'ABA2008', 'ZAMZURYANI', 'FA29', '0124581086', 'zamzuryani@moe.edu.my', 'PORT INTERNET ROSAK', 'DALAM PROSES', '', '', '', '', ''),
+(62, '2017-10-31', 'ST269738', 'KINTA UTARA', 'SMK BUKIT PASIR', 'ABA2010', 'JULIA MOHAMAD', 'FT19', '0123456789551', 'julia@moe.gov.my', 'test apply', 'DALAM PROSES', '', '', '', '', 'TUGASAN YANG BAGUS'),
+(71, '2017-11-06', '84de1943', 'KINTA UTARA', 'ska jati', 'aba2058', 'jamal', 'tukang kebun', '0134134717', 'jamal@satu.dua', 'sdvbipquwe piuhwf jqwipfuh isdfnqds pfisudhfiufdyghaipgruh weuhf iasuiusfiugfiausfiajfiaugi fuvg', 'DALAM PROSES', '', '', '', '', ''),
+(72, '0000-00-00', 'abb647fe', 'KINTA UTARA', 'SK HAJI MAHMUD', 'ABA2008', 'ZAMZURYANI', 'FA29', '0134566522', 'zamzuryani@moe.edu.my', 'pemasangan cable', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -140,7 +143,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `permohonan`
 --
 ALTER TABLE `permohonan`
-  MODIFY `id_mohon` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_mohon` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `user`
 --
